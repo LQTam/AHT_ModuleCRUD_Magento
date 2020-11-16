@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @var \AHT\Product\Block\Edit $block
+ */
+
+$post = $block->getPost();
+?>
+
+<form action="/m235/product/index/save" method="post">
+    <input type="hidden" name='post_id' value="<?= $post->getData('post_id') ?>">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="<?= $post->getData('name') ?>" placeholder="Type Name Here">
+
+    <label for="post_content">Content</label>
+    <textarea name="post_content" id="post_content" cols="30" rows="10" placeholder="Type Content here"><?= $post->getData('post_content') ?></textarea>
+
+    <input type="submit" value="Save" />
+</form>

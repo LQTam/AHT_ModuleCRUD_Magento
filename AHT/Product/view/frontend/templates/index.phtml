@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * @var \AHT\Product\Block\Index $block
+ */
+$collection = $block->getAllPosts();
+$url = $block->getUrl('product/index');
+?>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .post-id {
+        width: 2%
+    }
+
+    .post-name {
+        width: 30%
+    }
+</style>
+
+<h1>Product Manager</h1>
+
+<h3><a class="btn btn-secondary" href="<?php echo $url . 'create' ?>">Add Post</a></h3>
+<table>
+    <thead>
+        <tr>
+            <th class="post-id">ID</th>
+            <!--        <th>Featured Image</th>-->
+            <th class="post-name">Name</th>
+            <!--        <th>URL Key</th>-->
+            <th>Content</th>
+            <!--        <th>Tags</th>-->
+            <!--        <th>Status</th>-->
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($collection as $item) : ?>
+            <tr>
+                <td><?php echo $item->getId() ?></td>
+                <!--            <td>--><?php //echo $item->getFeaturedImage()
+                                        ?>
+                <!--</td>-->
+                <td><?php echo $item->getName() ?></td>
+                <!--            <td>--><?php //echo $item->getUrlKey()
+                                        ?>
+                <!--</td>-->
+                <td><?php echo $item->getPostContent() ?></td>
+                <!--            <td>--><?php //echo $item->getTags()
+                                        ?>
+                <!--</td>-->
+                <!--            <td>--><?php //echo $item->getStatus()
+                                        ?>
+                <!--</td>-->
+                <td><a href="<?php echo $url . 'edit/post_id/' . $item->getId() ?>" class="btn btn-primary">Edit</a> | <a class="btn btn-danger" href="<?php echo $url . 'delete?post_id=' . $item->getId() ?>">Delete</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
