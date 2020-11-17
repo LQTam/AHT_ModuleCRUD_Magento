@@ -1,4 +1,12 @@
-<form action="/m235/product/index/save" method="post">
+<?php
+
+/**
+ * @var \AHT\Product\Block\Edit $block
+ */
+
+?>
+
+<form action="<?= $block->getUrl('product/index/save') ?>" method="post">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" placeholder="Type Name Here">
 
